@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gitpod_flutter_quickstart/constants.dart';
+import 'package:kenz_tools/constants.dart';
 
 class ToolsDetailsScreen extends StatelessWidget {
   const ToolsDetailsScreen({Key? key, required this.tool}) : super(key: key);
@@ -23,8 +23,10 @@ class ToolsDetailsScreen extends StatelessWidget {
             ),
             Text(
               tool.desc,
-              style: Theme.of(context).textTheme.caption?.copyWith(fontSize: 20),
+              style:
+                  Theme.of(context).textTheme.caption?.copyWith(fontSize: 20),
             ),
+            tool.function
           ],
         ),
       ),

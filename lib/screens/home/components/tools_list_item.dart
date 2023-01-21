@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gitpod_flutter_quickstart/constants.dart';
-import 'package:gitpod_flutter_quickstart/screens/details/tools_details_screen.dart';
+import 'package:kenz_tools/constants.dart';
+import 'package:kenz_tools/screens/details/tools_details_screen.dart';
 
 class ToolsListItem extends StatelessWidget {
   const ToolsListItem({Key? key, required this.tool}) : super(key: key);
@@ -24,4 +24,3 @@ class ToolsListItem extends StatelessWidget {
     );
   }
 }
-

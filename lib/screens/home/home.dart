@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gitpod_flutter_quickstart/screens/home/components/tools_list_view.dart';
+import 'package:kenz_tools/screens/home/components/tools_list_view.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

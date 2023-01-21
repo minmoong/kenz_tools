@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "gitpod_flutter_quickstart" "\0"
+            VALUE "FileDescription", "kenz_tools" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "gitpod_flutter_quickstart" "\0"
+            VALUE "InternalName", "kenz_tools" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "gitpod_flutter_quickstart.exe" "\0"
-            VALUE "ProductName", "gitpod_flutter_quickstart" "\0"
+            VALUE "OriginalFilename", "kenz_tools.exe" "\0"
+            VALUE "ProductName", "kenz_tools" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

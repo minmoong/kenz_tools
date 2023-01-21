@@ -5,7 +5,7 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = gitpod_flutter_quickstart
+PRODUCT_NAME = kenz_tools
 
 // The application's bundle identifier
 PRODUCT_BUNDLE_IDENTIFIER = com.example.gitpodFlutterQuickstart
