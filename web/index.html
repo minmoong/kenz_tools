@@ -23,13 +23,13 @@
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="gitpod_flutter_quickstart">
+  <meta name="apple-mobile-web-app-title" content="kenz_tools">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>gitpod_flutter_quickstart</title>
+  <title>kenz_tools</title>
   <link rel="manifest" href="manifest.json">
 
   <script>
@@ -40,6 +40,22 @@
   <script src="flutter.js" defer></script>
 </head>
 <body>
+  <script src='https://unpkg.com/tesseract.js@2.1.1/dist/tesseract.min.js'></script>
+  <script>
+    async function _extractText(imagePath , mapData){
+      var worker = Tesseract.createWorker();
+      await worker.load();
+      await worker.loadLanguage(mapData.language)
+      await worker.initialize(mapData.language)
+      await worker.setParameters(mapData.args)
+      var rtn = await worker.recognize(imagePath, {}, worker.id);
+      await worker.terminate();
+      if(mapData.args["tessjs_create_hocr"]){
+        return rtn.data.hocr;  
+      }
+      return rtn.data.text;
+    }
+  </script>
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
