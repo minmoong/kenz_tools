@@ -39,10 +39,60 @@ class _WordRecognizerViewState extends State<WordRecognizerView> {
   Future<void> ocr() async {
     await getImageFromGallery();
     await encodeImage2Base64();
-    final String recognizedText = await getRecognizedText();
-
-    // 감지된 텍스트 다듬기
-    print(prettierRecognizedText(recognizedText));
+    // final recognizedTextList =
+    //     prettierRecognizedText(await getRecognizedText());
+    final recognizedTextList = [
+      "petition",
+      "O",
+      "tragedy",
+      "prejudice",
+      "flaw",
+      "Crisis",
+      "exclusive",
+      "evacuate",
+      "apparent",
+      "",
+      "on Strike",
+      "have struggled",
+      "with",
+      "bragged akont",
+      "Contestant",
+      "help onself to",
+      "habitat",
+      "medication",
+      "instruction",
+      "legislation",
+      "Stubborn",
+      "Conducting",
+      "accumulate",
+      "immune",
+      "of ones choice",
+      "resign",
+      "beat around",
+      "the bush",
+      "tution fees",
+      "from within",
+      "appoint",
+      "Massike",
+      "o Squeeze",
+      "erupt",
+      "dozente",
+      "emissions",
+      "time off",
+      "Specimens",
+      "exhaust",
+      "O",
+      "real estate",
+      "patents",
+      "O",
+      "unsettled",
+      "regulute",
+      "correction",
+      "deforestation",
+      "recession",
+      "know A by heart",
+      "Pop quizzes",
+    ];
   }
 
   Future<void> getImageFromGallery() async {
@@ -64,6 +114,28 @@ class _WordRecognizerViewState extends State<WordRecognizerView> {
   }
 
   Future<String> getRecognizedText() async {
+    // // TODO: shorten gv.~
+    // final googleVision =
+    //     await gv.GoogleVision.withJwt('./kenz-tools-f5507b94c0a6.json');
+
+    // final image = gv.Image.fromBase64(imageBase64!);
+    // final requests = gv.AnnotationRequests(
+    //   requests: [
+    //     gv.AnnotationRequest(
+    //       image: image,
+    //       features: [
+    //         gv.Feature(
+    //           maxResults: 10,
+    //           type: 'DOCUMENT_TEXT_DETECTION',
+    //         ),
+    //       ],
+    //     ),
+    //   ],
+    // );
+    // final annotatedResponses = await googleVision.annotate(requests: requests);
+    // print(annotatedResponses);
+    // return '';
+
     final body = {
       'requests': [
         {
@@ -80,7 +152,7 @@ class _WordRecognizerViewState extends State<WordRecognizerView> {
           'https://vision.googleapis.com/v1/images:annotate'), // TODO: hide key
       headers: {
         'Authorization':
-            'Bearer ya29.c.b0AT7lpjCA2xAcTTb3Ja0XulxIQgWKXl1K0d7RPFD0nQWWSnNKbhxpEYHg8JsbDYXukxSuVObJxJ979ykKtWYOwh9ezwKFApH5vEKUVGFTX1t0KnSZ9gFqtBlzQTpajNm9xyfWTdMy1f6Lo5wzwF99suw9hvWjTtrHmj4Zh4ziS69RfyloxXsQm09mpJxlPjVe6U9z5P6sFbxRA3O_seRQxnA38Mo9PiD1P6OUvkJleTo',
+            'Bearer ya29.c.b0Aaekm1IHQzIUozYeNVwv_MqqR7QwKFRHKaTSdS4ZsSo1Z9u4-A2tE0BmKL_9W9Ro9x_GZz7DWX5enhmbF7Viu3EtQyjGWjfL4JqgYu_YtKgVpAJOktkNG5LVNQ6Pn80L6n341dX4dY8DmrmG1cFOYqVOtlz-SYrGGvMCXcwRMOI1m_fDZn1wekr6C9GLm2xHOTjMLPMa38khQHUfIOQROL6Zfl-1hds6NlUz-wwaink',
         'x-goog-user-project': 'kenz-tools',
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -92,11 +164,12 @@ class _WordRecognizerViewState extends State<WordRecognizerView> {
     return visionData['responses'][0]['textAnnotations'][0]['description'];
   }
 
-  List<String> prettierRecognizedText(String recognizedText) {
+  String prettierRecognizedText(String recognizedText) {
     List<String> list = recognizedText.split('\n');
     list.asMap().forEach((key, value) {
       list[key] = value.replaceAll(RegExp('[^a-zA-Z0-9ㄱ-힣\\s]'), '');
+      list[key] = list[key].replaceAll(RegExp('^\\s|\\s\$'), '');
     });
-    return list;
+    return jsonEncode(list);
   }
 }
